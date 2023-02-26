@@ -1,9 +1,19 @@
 import React from 'react';
+import { useContext } from 'react';
 import styled from 'styled-components';
+import { GithubContext } from '../context/context';
 import Card from './Card';
 import Followers from './Followers';
 const User = () => {
-  return <h2>search component</h2>;
+
+
+  return <section className='section'>
+    <Wrapper>
+      <Card />
+      <Followers />
+    </Wrapper>
+
+  </section>
 };
 
 const Wrapper = styled.div`

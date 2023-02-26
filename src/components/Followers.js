@@ -1,10 +1,35 @@
 import React from 'react';
 import { GithubContext } from '../context/context';
 import styled from 'styled-components';
+import { useContext } from 'react';
 
 const Followers = () => {
-  return <h2>followers component</h2>;
+  const { followers } = useContext(GithubContext);
+  console.log(followers)
+  return <Wrapper>
+
+    <div className="followers">
+      {
+        followers.map(follower => <Follower key={follower.id} follower={follower}></Follower>)
+      }
+    </div>
+
+  </Wrapper>;
 };
+
+const Follower = ({ follower }) => {
+  const { avatar_url, html_url, login } = follower
+  return <article>
+    <div>
+      <img src={avatar_url} alt="" />
+    </div>
+    <div>
+      <h4>{login}</h4>
+      <a href={html_url}>{html_url}</a>
+    </div>
+
+  </article>
+}
 
 const Wrapper = styled.article`
   background: var(--clr-white);

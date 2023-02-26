@@ -2,8 +2,33 @@ import React from 'react';
 import { GithubContext } from '../context/context';
 import styled from 'styled-components';
 import { MdBusiness, MdLocationOn, MdLink } from 'react-icons/md';
+import { useContext } from 'react';
 const Card = () => {
-  return <h2>card component</h2>;
+  const { user } = useContext(GithubContext)
+  const { avatar_url, login, html_url, name, company, location, bio } = user;
+  return <Wrapper>
+    <header>
+      <img src={avatar_url} alt="" />
+      <div>
+        <h3>{name}</h3>
+        <p>@{login}</p>
+      </div>
+      <div>
+        <a href={html_url}>follow</a>
+      </div>
+
+
+    </header>
+    <div>
+      <p className='bio'>{bio}</p>
+    </div>
+
+    <div className="links">
+      <p><MdBusiness></MdBusiness> {company}</p>
+      <p><MdLocationOn /> {location}</p>
+    </div>
+
+  </Wrapper>;
 };
 const Wrapper = styled.article`
   background: var(--clr-white);
